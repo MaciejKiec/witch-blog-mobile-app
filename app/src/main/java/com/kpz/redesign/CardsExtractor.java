@@ -8,6 +8,7 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfPoint;
@@ -42,7 +43,7 @@ public class CardsExtractor {
 
     public static void extractCardsFromImage(String fileName, Activity activity, int cardsInThePicture) {
         Mat img = getMatFromBytes(fileName, activity);
-        //Core.rotate(img, image, Core.ROTATE_90_COUNTERCLOCKWISE);
+        //Core.rotate(img, img, Core.ROTATE_90_COUNTERCLOCKWISE);
         Mat original = img.clone();
 
         Mat gray = new Mat();

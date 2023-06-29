@@ -127,7 +127,7 @@ public class DetectedCards extends AppCompatActivity {
 
             @Override
             public void onUploadFailure(String errorMessage) {
-                textView.setText("Nie udało się!");
+                textView.setText("Problem z serwerem Azure!");
             }
         }, extractedCards, Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID), this);
@@ -136,7 +136,7 @@ public class DetectedCards extends AppCompatActivity {
     }
 
     public void GoToDivinations(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Divination.class);
         startActivity(intent);
     }
 }

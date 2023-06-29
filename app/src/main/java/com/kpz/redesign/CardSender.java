@@ -22,10 +22,9 @@ import java.net.URL;
 
 public class CardSender extends AsyncTask<Void, Void, JSONObject> {
     private static final String TAG = CardSender.class.getSimpleName();
-
     private final String directoryPath = "/detected_cards/";
 
-    private static final String SERVER_URL = "http://cardrecognitionalgorithm.azurewebsites.net/process";
+    private static final String SERVER_URL = "https://cardrecognitionalgorithm.azurewebsites.net/process";
     private final ImageUploadCallback callback;
     private List<String> extractedCards;
 
