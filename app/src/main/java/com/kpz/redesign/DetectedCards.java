@@ -141,7 +141,7 @@ public class DetectedCards extends AppCompatActivity {
     }
 
     public void GoToDivinations(View view) {
-        Intent intent = new Intent(this, Divination.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
