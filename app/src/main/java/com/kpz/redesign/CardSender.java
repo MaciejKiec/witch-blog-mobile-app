@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Base64;
-import android.util.Log;;
+import android.util.Log;
 
 
 import java.io.File;
@@ -25,7 +25,7 @@ public class CardSender extends AsyncTask<Void, Void, JSONObject> {
 
     private final String directoryPath = "/detected_cards/";
 
-    private static final String SERVER_URL = "http://cardrecognitionalgorithm.azurewebsites.net/process";
+    private static final String SERVER_URL = "https://cardrecognitionalgorithm.azurewebsites.net/process";
     private final ImageUploadCallback callback;
     private List<String> extractedCards;
 
