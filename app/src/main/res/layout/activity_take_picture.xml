@@ -16,7 +16,7 @@
         android:layout_height="60sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40sp"
+        android:layout_marginBottom="160sp"
         android:id="@+id/capture"
         android:src="@drawable/round_camera_24"
         android:scaleType="centerCrop"
