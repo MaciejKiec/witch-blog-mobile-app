@@ -27,16 +27,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/extractedCardView"
         android:layout_width="323dp"
         android:layout_height="463dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="144dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/DivinationMessage"
+        android:layout_width="323dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/divination_border"
+        android:fontFamily="@font/courier_prime"
+        android:text="Hello World!"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/offBlack"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/PrevButton"
@@ -76,7 +95,6 @@
         android:layout_height="58dp"
         android:background="@drawable/button_border"
         android:fontFamily="@font/courier_prime"
-        android:onClick="GoToDivinations"
         android:text="@string/show_divination"
         android:textColor="@color/offBlack"
         app:backgroundTint="@null"
