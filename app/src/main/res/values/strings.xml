@@ -6,4 +6,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="reveal_your_fate">Reveal\nyour fate</string>
     <string name="check_out_our_website">Check out\nour website</string>
+    <string name="show_divination">Show divination</string>
+    <string name="waiting_for_response_from_the_server">Waiting for response from the server</string>
 </resources>

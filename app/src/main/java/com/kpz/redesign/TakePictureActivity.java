@@ -122,8 +122,8 @@ public class TakePictureActivity extends AppCompatActivity {
 
     public void takePicture(ImageCapture imageCapture) {
         Folder = new File(folderName);
-
-        final File file = new File(getExternalFilesDir(folderName), "/" + System.currentTimeMillis() + ".jpg");
+        String fileName =  System.currentTimeMillis() + ".jpg";
+        final File file = new File(getExternalFilesDir(folderName), "/" + fileName);
         ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(file).build();
         if(!Folder.exists()){
             Folder.mkdirs();
@@ -131,6 +131,7 @@ public class TakePictureActivity extends AppCompatActivity {
         imageCapture.takePicture(outputFileOptions, Executors.newCachedThreadPool(), new ImageCapture.OnImageSavedCallback() {
             @Override
             public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                CardsExtractor.extractCardsFromImage(getExternalFilesDir(folderName)+"/"+ fileName, TakePictureActivity.this, 3);
                 Intent intent = new Intent(TakePictureActivity.this, DetectedCards.class);
                 startActivity(intent);
                 startCamera(cameraFacing);
