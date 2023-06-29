@@ -13,13 +13,12 @@ import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,6 +32,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 public class TakePictureActivity extends AppCompatActivity {
+    private File Folder;
+    private String folderName = "TakenPictures";
     ImageButton capture, toggleFlash, flipCamera;
     private PreviewView previewView;
     int cameraFacing = CameraSelector.LENS_FACING_BACK;
@@ -102,7 +103,7 @@ public class TakePictureActivity extends AppCompatActivity {
 
                 capture.setOnClickListener(view -> {
                     if (ContextCompat.checkSelfPermission(TakePictureActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        //if the api is beyond 31 we dont really have to ask for permission
+                        //if the api is beyond 31 we don't really have to ask for permission
                         activityResultLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
                         takePicture(imageCapture);
                     } else {
@@ -120,18 +121,24 @@ public class TakePictureActivity extends AppCompatActivity {
     }
 
     public void takePicture(ImageCapture imageCapture) {
-        final File file = new File(getExternalFilesDir(null), System.currentTimeMillis() + ".jpg");
+        Folder = new File(folderName);
+
+        final File file = new File(getExternalFilesDir(folderName), "/" + System.currentTimeMillis() + ".jpg");
         ImageCapture.OutputFileOptions outputFileOptions = new ImageCapture.OutputFileOptions.Builder(file).build();
+        if(!Folder.exists()){
+            Folder.mkdirs();
+        }
         imageCapture.takePicture(outputFileOptions, Executors.newCachedThreadPool(), new ImageCapture.OnImageSavedCallback() {
             @Override
             public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                runOnUiThread(() -> Toast.makeText(TakePictureActivity.this, "Image saved at: " + file.getPath(), Toast.LENGTH_SHORT).show());
+                Intent intent = new Intent(TakePictureActivity.this, DetectedCards.class);
+                startActivity(intent);
                 startCamera(cameraFacing);
             }
 
             @Override
             public void onError(@NonNull ImageCaptureException exception) {
-                runOnUiThread(() -> Toast.makeText(TakePictureActivity.this, "Failed to save: " + exception.getMessage(), Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(TakePictureActivity.this, "Failed to save picture!", Toast.LENGTH_SHORT).show());
                 startCamera(cameraFacing);
             }
         });

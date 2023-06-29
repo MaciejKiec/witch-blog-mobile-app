@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Widget.Theme.Redesign.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/offWhite</item>
+    </style>
+
+    <style name="Widget.Theme.Redesign.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/offWhite</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+</resources>
