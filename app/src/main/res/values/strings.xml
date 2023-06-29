@@ -4,4 +4,6 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="reveal_your_fate">Reveal\nyour fate</string>
+    <string name="check_out_our_website">Check out\nour website</string>
 </resources>
