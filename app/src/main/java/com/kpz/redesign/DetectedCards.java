@@ -7,10 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,21 +34,17 @@ public class DetectedCards extends AppCompatActivity {
     private TextView textView;
     public static JSONObject card_names;
     private int counter = 0;
-
-    private TextView DivinationMessage;
-
-    private Button button2;
     private String divination;
 
-    private List<String> loadCards() {
+    private List<String> loadCards(){
         List<String> detectedCards = new ArrayList<>();
         File directory = getExternalFilesDir(directoryPath);
-        if (!directory.exists()) return detectedCards;
+        if(!directory.exists()) return detectedCards;
 
         File[] files = directory.listFiles();
         assert files != null;
-        for (final File file : files) {
-            if (file.isFile()) detectedCards.add(file.getName());
+        for(final File file: files){
+            if(file.isFile()) detectedCards.add(file.getName());
         }
 
         return detectedCards;
@@ -59,8 +55,8 @@ public class DetectedCards extends AppCompatActivity {
         divination = card_names.getString("3");
     }
 
-    private void init() {
-        File image = new File(getExternalFilesDir(directoryPath), "/" + extractedCards.get(currentImage));
+    private void init(){
+        File image = new File(getExternalFilesDir(directoryPath), "/" +extractedCards.get(currentImage));
         Bitmap myBitmap = BitmapFactory.decodeFile(image.getAbsolutePath());
         myImage.setImageBitmap(myBitmap);
     }
@@ -69,13 +65,13 @@ public class DetectedCards extends AppCompatActivity {
         counter += 1;
         currentImage += 1;
         textView.setText(card_names.getString(Integer.toString(counter)));
-        File image = new File(getExternalFilesDir(directoryPath), "/" + extractedCards.get(currentImage));
+        File image = new File(getExternalFilesDir(directoryPath), "/" +extractedCards.get(currentImage));
         Bitmap myBitmap = BitmapFactory.decodeFile(image.getAbsolutePath());
         myImage.setImageBitmap(myBitmap);
-        if (currentImage == extractedCards.size() - 1) {
+        if(currentImage == extractedCards.size() - 1){
             nextButton.setEnabled(false);
         }
-        if (currentImage == 1) {
+        if(currentImage == 1){
             previousButton.setEnabled(true);
         }
     }
@@ -84,16 +80,17 @@ public class DetectedCards extends AppCompatActivity {
         counter -= 1;
         currentImage -= 1;
         textView.setText(card_names.getString(Integer.toString(counter)));
-        File image = new File(getExternalFilesDir(directoryPath), "/" + extractedCards.get(currentImage));
+        File image = new File(getExternalFilesDir(directoryPath), "/" +extractedCards.get(currentImage));
         Bitmap myBitmap = BitmapFactory.decodeFile(image.getAbsolutePath());
         myImage.setImageBitmap(myBitmap);
-        if (currentImage == 0) {
+        if(currentImage == 0){
             previousButton.setEnabled(false);
         }
-        if (currentImage == 1) {
+        if(currentImage == 1){
             nextButton.setEnabled(true);
         }
     }
+
 
 
     @Override
@@ -118,19 +115,7 @@ public class DetectedCards extends AppCompatActivity {
         nextButton.setEnabled(false);
         previousButton.setEnabled(false);
         extractedCards = loadCards();
-        DivinationMessage = findViewById(R.id.DivinationMessage);
-        button2 = findViewById(R.id.button2);
         init();
-
-
-        button2.setOnClickListener(v -> {
-            if (DivinationMessage.getVisibility() == View.VISIBLE) {
-                DivinationMessage.setVisibility(View.INVISIBLE);
-            } else {
-                DivinationMessage.setVisibility(View.VISIBLE);
-            }
-        });
-
 
         CardSender task = new CardSender(new CardSender.ImageUploadCallback() {
             @Override
@@ -140,7 +125,7 @@ public class DetectedCards extends AppCompatActivity {
                 previousButton.setEnabled(true);
                 try {
                     initTextView();
-                } catch (JSONException e) {
+                }catch (JSONException e){
                     textView.setText("JsonException occured!");
                 }
             }
@@ -155,4 +140,8 @@ public class DetectedCards extends AppCompatActivity {
         task.execute();
     }
 
+    public void GoToDivinations(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
