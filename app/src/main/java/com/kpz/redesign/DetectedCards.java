@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,6 +34,7 @@ public class DetectedCards extends AppCompatActivity {
     private TextView textView;
     public static JSONObject card_names;
     private int counter = 0;
+    private String divination;
 
     private List<String> loadCards(){
         List<String> detectedCards = new ArrayList<>();
@@ -50,6 +52,7 @@ public class DetectedCards extends AppCompatActivity {
 
     private void initTextView() throws JSONException {
         textView.setText(card_names.getString("0"));
+        divination = card_names.getString("3");
     }
 
     private void init(){
@@ -103,14 +106,14 @@ public class DetectedCards extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
         setContentView(R.layout.activity_detected_cards);
         textView = (TextView) findViewById(R.id.Response);
         myImage = (ImageView) findViewById(R.id.extractedCardView);
         previousButton = (ImageButton) findViewById(R.id.PrevButton);
         previousButton.setEnabled(false);
         nextButton = (ImageButton) findViewById(R.id.NextButton);
+        nextButton.setEnabled(false);
+        previousButton.setEnabled(false);
         extractedCards = loadCards();
         init();
 
@@ -118,6 +121,8 @@ public class DetectedCards extends AppCompatActivity {
             @Override
             public void onUploadComplete(JSONObject response) {
                 card_names = response;
+                nextButton.setEnabled(true);
+                previousButton.setEnabled(true);
                 try {
                     initTextView();
                 }catch (JSONException e){
