@@ -31,11 +31,9 @@ public class DetectedCards extends AppCompatActivity {
     private ImageView myImage;
     private ImageButton nextButton;
     private ImageButton previousButton;
-    private TextView textView;
+    private TextView textView, divinationMessage;
     public static JSONObject card_names;
     private int counter = 0;
-    private String divination;
-
     private List<String> loadCards(){
         List<String> detectedCards = new ArrayList<>();
         File directory = getExternalFilesDir(directoryPath);
@@ -52,7 +50,7 @@ public class DetectedCards extends AppCompatActivity {
 
     private void initTextView() throws JSONException {
         textView.setText(card_names.getString("0"));
-        divination = card_names.getString("3");
+        divinationMessage.setText(card_names.getString("3"));
     }
 
     private void init(){
@@ -110,8 +108,8 @@ public class DetectedCards extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.Response);
         myImage = (ImageView) findViewById(R.id.extractedCardView);
         previousButton = (ImageButton) findViewById(R.id.PrevButton);
-        previousButton.setEnabled(false);
         nextButton = (ImageButton) findViewById(R.id.NextButton);
+        divinationMessage = findViewById(R.id.DivinationMessage);
         nextButton.setEnabled(false);
         previousButton.setEnabled(false);
         extractedCards = loadCards();
@@ -140,8 +138,12 @@ public class DetectedCards extends AppCompatActivity {
         task.execute();
     }
 
-    public void GoToDivinations(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void PopUP(View view) {
+        int isOpened = divinationMessage.getVisibility();
+        if(isOpened == View.INVISIBLE){
+            divinationMessage.setVisibility(View.VISIBLE);
+        }else{
+            divinationMessage.setVisibility(View.INVISIBLE);
+        }
     }
 }

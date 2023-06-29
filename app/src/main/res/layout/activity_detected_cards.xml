@@ -97,6 +97,7 @@
         android:fontFamily="@font/courier_prime"
         android:text="@string/show_divination"
         android:textColor="@color/offBlack"
+        android:onClick="PopUP"
         app:backgroundTint="@null"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
