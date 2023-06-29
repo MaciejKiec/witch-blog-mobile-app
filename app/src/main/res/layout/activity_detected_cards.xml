@@ -4,77 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/offWhite"
     tools:context=".DetectedCards">
 
 
+    <TextView
+        android:id="@+id/Response"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="36dp"
+        android:padding="10dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/courier_prime"
+        android:text="@string/waiting_for_response_from_the_server"
+        android:textAlignment="center"
+        android:textColor="@color/offBlack"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/extractedCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/extractedCardView"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_width="323dp"
+        android:layout_height="463dp"
+        android:layout_marginTop="140dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-
     <ImageButton
         android:id="@+id/PrevButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="44dp"
+        android:background="@null"
         android:onClick="previous"
-        android:src="@drawable/previous"
         android:scaleType="fitXY"
+        android:src="@drawable/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/extractedCardView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.556"
+        app:tint="@color/offBlack"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/NextButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="44dp"
+        android:background="@null"
         android:onClick="next"
-        android:src="@drawable/next"
         android:scaleType="fitXY"
+        android:src="@drawable/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/extractedCardView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.556"
+        app:tint="@color/offBlack"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/Response"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/waiting_for_response_from_the_server"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/extractedCardView"
-        app:layout_constraintVertical_bias="0.154" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#333"
+        android:layout_width="184dp"
+        android:layout_height="58dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/courier_prime"
         android:onClick="GoToDivinations"
         android:text="@string/show_divination"
-        android:textColor="#f2f2f2"
-        app:cornerRadius="30dp"
+        android:textColor="@color/offBlack"
+        app:backgroundTint="@null"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/NextButton"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toEndOf="@+id/PrevButton"
-        app:layout_constraintTop_toBottomOf="@+id/Response"
-        app:layout_constraintVertical_bias="0.512" />
+        app:layout_constraintTop_toBottomOf="@+id/extractedCardView"
+        app:layout_constraintVertical_bias="0.571" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

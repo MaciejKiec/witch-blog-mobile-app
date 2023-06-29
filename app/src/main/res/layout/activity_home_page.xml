@@ -15,11 +15,10 @@
         android:layout_marginBottom="36dp"
         android:fontFamily="@font/courier_prime_bold"
         android:text="@string/WitchBlogString"
-        android:textColor="@color/offBlack"
-        android:textSize="30dp"
         android:textAlignment="center"
+        android:textColor="@color/offBlack"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,9 +45,10 @@
                 android:id="@+id/RevealYourFate"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
-                android:layout_marginTop="12dp"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/RevealText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:background="@null"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="TakePictureActivity"
@@ -63,13 +63,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
                 android:clickable="false"
-                android:textAlignment="center"
                 android:fontFamily="@font/courier_prime"
                 android:gravity="center"
                 android:text="@string/reveal_your_fate"
+                android:textAlignment="center"
                 android:textColor="@color/offBlack"
-                android:textSize="20dp" />
-
+                android:textSize="20sp" />
 
 
         </RelativeLayout>
@@ -87,9 +86,10 @@
                 android:id="@+id/GoToWebApp"
                 android:layout_width="160dp"
                 android:layout_height="198.2808023dp"
-                android:layout_marginTop="12dp"
                 android:layout_below="@id/WebsiteText"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:background="@null"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:onClick="OpenBrowser"
@@ -103,12 +103,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
                 android:clickable="false"
-                android:textAlignment="center"
                 android:fontFamily="@font/courier_prime"
                 android:gravity="center"
                 android:text="@string/check_out_our_website"
+                android:textAlignment="center"
                 android:textColor="@color/offBlack"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
